@@ -1,28 +1,28 @@
-import { ExternalLink, Star } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import React from "react";
 import { motion } from "framer-motion";
 
 const cardVariants = [
   {
-    hidden: { opacity: 0, x: 80 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
-  }, // Left
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  }, // Fade-in with zoom-in
   {
-    hidden: { opacity: 0, x: 80 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
-  }, // Right
-  {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 50, transition: { duration: 0.8 } },
-  }, // Down (small movement)
-  {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 50, transition: { duration: 0.8 } },
-  }, // Up (small movement)
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  }, // Fade-in with zoom-in
 ];
 
 const parentVariants = {
-  visible: { transition: { staggerChildren: 0.3 } }, // Stagger animation by 0.3s
+  visible: { transition: { staggerChildren: 0.2 } }, // Stagger animation by 0.2s
 };
 
 function Projects() {
@@ -49,7 +49,7 @@ function Projects() {
           {[1, 2, 3, 4].map((project, index) => (
             <motion.div
               key={project}
-              variants={cardVariants[index % cardVariants.length]} // Apply different direction for each card
+              variants={cardVariants[index % cardVariants.length]} // Apply fade-in with zoom-in for each card
               className="bg-white rounded-lg overflow-hidden shadow-xl hover:scale-105 transition-transform duration-300"
             >
               <img
@@ -78,7 +78,7 @@ function Projects() {
                   </div>
                   <a
                     href="#"
-                    className="text-purple-500  hover:text-purple-700 flex items-center sm:text-base mt-2 sm:mt-0"
+                    className="text-purple-500 hover:text-purple-700 flex items-center sm:text-base mt-2 sm:mt-0"
                   >
                     <ExternalLink className="h-4 w-4 ml-1" />
                   </a>
